@@ -1,0 +1,91 @@
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+/*
+void ft_putstr(char *str)
+{
+    int i;
+
+    i = 0;
+    while (str[i] != '\0')
+    {
+        ft_putchar(str[i]);
+        i++;
+    }
+}
+*/
+
+void ft_createrow(int indicator, int col)
+{
+    int i;
+
+    i = 1;
+    ft_putchar('\n');
+    if (indicator == 0)
+    {
+        while (i <= col)
+        {
+            ft_putchar('B');
+            i++;
+        }
+    }
+    else
+    {
+        while (i <= col)
+        {
+            if (i == 1 || i == col)
+                ft_putchar('B');
+            else
+                ft_putchar(' ');
+            ++i;
+        }
+    }
+}
+
+/*
+void ft_replace(char c, char *list)
+{
+    char original[2];
+
+    original[0] = 'A';
+    original[1] = 'C';
+    if (c == 'A')
+    {
+        list[0] = original[0];
+        list[-1] = original [0];
+    }
+    else
+    {
+        list[0] = original[1];
+        list[-1] = original[1];
+    }
+}
+*/
+
+void rush02(int col, int row)
+{
+    int i;
+
+    i = 1;
+    while (i <= row)
+        if (i == 1 || i == row)
+        {
+            ft_createrow(0, col);
+            i++;
+        }
+        else if (i != 1 || i != row)
+        {
+            ft_createrow(1, col);
+            i++;
+        }
+}
+
+int main(void)
+{
+  rush02(10,5);
+  return 0;
+}
